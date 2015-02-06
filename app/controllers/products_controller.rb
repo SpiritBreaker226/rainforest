@@ -14,15 +14,15 @@ class ProductsController < ApplicationController
   end
 
   def edit
-  	@product = Product.find(param[:id])
+  	@product = Product.find(params[:id])
   end
 
   def show
-  	@product = Product.find(param[:id])
+  	@product = Product.find(params[:id])
   end
 
   def update
-  	@product = Product.find(param[:id])
+  	@product = Product.find(params[:id])
 
   	@product.update_attributes(product_params) ? redirect_to(product_path(@product)) : render(:edit)
   end
