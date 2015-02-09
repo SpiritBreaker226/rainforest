@@ -7,3 +7,15 @@ Price: <%= @product.formatted_price %>
 Description:<br>
 <%= @product.description %>
 
+<h3>Reviews</h3>
+
+<%= render 'reviews/show' %>
+
+<% if current_user %>
+	<h4>New Review</h4>
+
+	<%= render 'reviews/form' %>
+
+<% else %>
+	<p>Please <%= link_to("log in", new_session_path) %> to add a review</p>
+<% end %>

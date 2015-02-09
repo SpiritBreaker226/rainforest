@@ -1,0 +1,17 @@
+<P>Reviews for <%= @product.name %></P>
+
+<% @product.reviews.each do |review| %>
+	<p>
+		<%= review.comment %>
+		<br>
+		<% if review.user != nil %>
+			<em> by <% review.user.email %></em>
+			Added on: <%= review.created_at %>
+			
+			<% if review.user == current_user %>
+				<br>
+				<%= link_to("(Edit)",  { controller: "reviews", action: "edit", product_id: @product.id, id: review.id }) %>
+			<% end %>	
+		<% end %>
+	</p>
+<% end %>
