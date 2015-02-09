@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :ensure_logged_in, only: [:new, :create, :destroy]
+
   def index
   	@products = Product.all
   end
