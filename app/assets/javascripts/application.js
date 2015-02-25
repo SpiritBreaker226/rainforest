@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on("ready page:load", function() {
+	if ($(".pagination").length) {
+		$(window).scroll(function() {
+			var url = $(".pagination span.next > a").attr("href");
+
+			if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+			}
+		});
+	}
+});
