@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
     #   user_id: current_user.id
     # )
     
-    @review.save ? redirect_to(products_path, notice: "Review created successfully") : render("proudcts/show")
+    @review.save ? redirect_to(product_path(@product), notice: "Review created successfully") : render("proudcts/show")
   end
 
   def edit
