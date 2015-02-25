@@ -21,5 +21,8 @@ $(document).on("ready page:load", function() {
     		console.log(data);
     		$("#products").html(data);
     	});*/
+
+		// inside the submit event callback, replace the $.get portion with the following
+		$.getScript("/products?search=" + searchValue);
 	});
 });
