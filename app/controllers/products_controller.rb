@@ -2,7 +2,13 @@ class ProductsController < ApplicationController
   before_filter :ensure_logged_in, only: [:new, :create, :destroy]
 
   def index
-  	@products = Product.all
+    @products = if params[:search]
+      # needs to lower both the coloum value and the item form the user as
+      # different case will not be find even tho they have the same text
+      Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+    else
+      Product.all
+    end
   end
 
   def create
