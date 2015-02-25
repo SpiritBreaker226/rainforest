@@ -5,9 +5,9 @@ class ProductsController < ApplicationController
     @products = if params[:search]
       # needs to lower both the coloum value and the item form the user as
       # different case will not be find even tho they have the same text
-      Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%").order("products.name")
+      Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%").order("products.name").page(params[:page])
     else
-      Product.order("products.name")
+      Product.order("products.name").page(params[:page])
     end
 
     respond_to do |format|
