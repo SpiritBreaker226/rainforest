@@ -2,9 +2,6 @@
 
 <%= link_to("New", new_product_path) %>
 <br><br>
-<% @products.each do |product| %>
-	<%= link_to(product.name, product_path(product)) %>
-	<br><br>
-	<%= product.formatted_price %>
-	<br><br>
-<% end %>
+<div id="products">
+		<%= render @products %>
+</div>
