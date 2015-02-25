@@ -5,6 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.destroy_all
+Product.destroy_all
+
+User.create!({
+	email: Faker::Internet.safe_email('Jim'),
+	name: Faker::Name.name,
+	password: "password",
+	password_confirmation: "password"
+})
+
 100.times do
 	Product.create([
 		{ 
