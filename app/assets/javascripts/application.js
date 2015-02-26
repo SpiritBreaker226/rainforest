@@ -21,6 +21,7 @@ $(document).on("ready page:load", function() {
 			var url = $(".pagination span.next > a").attr("href");
 
 			if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+				return $.getScript(url);
 			}
 		});
 	}
