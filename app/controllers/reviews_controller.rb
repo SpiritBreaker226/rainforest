@@ -20,7 +20,15 @@ class ReviewsController < ApplicationController
     #   user_id: current_user.id
     # )
     
-    @review.save ? redirect_to(product_path(@product), notice: "Review created successfully") : render("proudcts/show")
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to(product_path(@product), notice: "Review created successfully") }
+        format.js
+      else
+        format.html { render("proudcts/show", alert: "There was an error") }
+        format.js
+      end
+    end
   end
 
   def edit
