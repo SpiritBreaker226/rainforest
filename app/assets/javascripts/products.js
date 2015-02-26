@@ -3,26 +3,18 @@ $(document).on("ready page:load", function() {
 		event.preventDefault();
 		var searchValue = $("#search").val();
 
-		/* 
-		jQuery AJAX Version
-
-		$.ajax({
-			url: "/products?search=" + searchValue,
-			type: "GET",
-			dataType: "html"
-		}).done(function(data) {
-			$("#products").html(data);
-		});*/
-
-		/* 
-		// inside the submit event callback, replace the $.ajax portion with the following
-    $.get("/products?search=" + searchValue)
-    	.done(function(data) {
-    		console.log(data);
-    		$("#products").html(data);
-    	});*/
-
 		// inside the submit event callback, replace the $.get portion with the following
 		$.getScript("/products?search=" + searchValue);
 	});
+
+	if ($(".pagination").length) {
+		$(window).scroll(function() {
+			var url = $(".pagination span.next > a").attr("href");
+
+			if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+				$(".pagination").text("Fetching more products...");
+				return $.getScript(url);
+			}
+		});
+	}
 });
