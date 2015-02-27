@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     
   	@review = @product.reviews.build(review_params)
   	@review.user = current_user
-
+    
   	# Check out this article on [.build](http://stackoverflow.com/questions/783584/ruby-on-rails-how-do-i-use-the-active-record-build-method-in-a-belongs-to-rel)
     # You could use a longer alternate syntax if it makes more sense to you
     # 
@@ -20,7 +20,15 @@ class ReviewsController < ApplicationController
     #   user_id: current_user.id
     # )
     
-    @review.save ? redirect_to(product_path(@product), notice: "Review created successfully") : render("proudcts/show")
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to(product_path(@product), notice: "Review created successfully") }
+        format.js
+      else
+        format.html { render("products/show", alert: "There was an error") }
+        format.js
+      end
+    end
   end
 
   def edit
