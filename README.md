@@ -1,3 +1,4 @@
-## Rainforest
+# Rainforest
+## Bitmaker: Week 3, 4
 
-This is a project from Bitmaker Labs, where it is a clone of Amazon, the famous e-commerce application. Its basically allowing users to create their won projects and allow other users to review them.
+In the Friday and contiuning on Monday til Tuesday assignment, we created a clone of Amazon, the famous e-commerce application. Its basically allowing users to create their own items and allow other users to review them.
